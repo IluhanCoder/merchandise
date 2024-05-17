@@ -89,7 +89,7 @@ const PredictionPage = () => {
         </div>
       </div>
       <div className="flex justify-center">
-        <div className="flex flex-col p-4" id="results">
+        <div className="flex flex-col p-4 bg-gray-900" id="results">
           <div className="flex justify-center">
             <div className="flex flex-col">
               {currentProduct && (

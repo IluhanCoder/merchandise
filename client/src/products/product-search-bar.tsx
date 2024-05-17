@@ -3,6 +3,7 @@ import RangePicker from "./search-bar-components/range-picker";
 import { ProductFilter } from "./product-types";
 import { inputStyle } from "../styles/form-styles";
 import { buttonStyle } from "../styles/button-styles";
+import categories from "../misc/categories-array";
 
 type LocalParams = {
   onSubmit: (filter: ProductFilter) => {};
@@ -48,12 +49,18 @@ const ProductSearchBar = (params: LocalParams) => {
         </div>
         <div className="flex gap-1">
           <label>Категорія:</label>
-          <input
-            className={inputStyle}
-            type="text"
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-          />
+          <select
+                    className={inputStyle + " w-72"}
+                    value={category}
+                    onChange={(e) => setCategory(e.target.value)}
+                  >
+                    <option value="">
+                      всі
+                    </option>
+                    {categories.map((cat: string) => <option value={cat}>
+                      {cat}
+                    </option>)}
+                  </select>
         </div>
         <div className="flex gap-2">
           <label>Діaпазон ціни (грн):</label>

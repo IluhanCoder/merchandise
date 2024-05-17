@@ -8,6 +8,7 @@ import { inputStyle } from "../styles/form-styles";
 import React, { useRef } from 'react';
 import html2PDF from "jspdf-html2canvas";
 import { ToastContainer, toast } from "react-toastify";
+import categories from "../misc/categories-array";
 
 const PairsPage = () => {
   const [minSupport, setMinSupport] = useState<number>(0.1);
@@ -108,12 +109,18 @@ const PairsPage = () => {
           </div>
           <div className="flex gap-2">
             <label>Категорія товару</label>
-            <input
-              className={inputStyle}
-              type="text"
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-            />
+            <select
+                    className={inputStyle + " w-72"}
+                    value={category}
+                    onChange={(e) => setCategory(e.target.value)}
+                  >
+                    <option value="">
+                      всі
+                    </option>
+                    {categories.map((cat: string) => <option value={cat}>
+                      {cat}
+                    </option>)}
+                  </select>
           </div>
           <div className="flex justify-center">
             <button
@@ -131,7 +138,7 @@ const PairsPage = () => {
                 Генерувати звіт
             </button>
         </div>}
-      <div className="flex flex-col gap-3 py-5" id="results">
+      <div className="flex flex-col gap-3 py-5 bg-gray-900" id="results">
         <div className="flex justify-center text-2xl">
           Таблиця шаблоних покупок:
         </div>
